@@ -3,7 +3,7 @@ const net = require('node:net');
 const path = require('node:path');
 const { once } = require('node:events');
 const { spawn } = require('node:child_process');
-const { MongoBinary } = require('mongodb-memory-server-core');
+const { MongoBinary } = require('mongodb-memory-server');
 
 const dbPath = path.join(__dirname, '.mongo-data');
 const mongoLog = path.join(__dirname, 'mongo.log');
