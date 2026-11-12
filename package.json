@@ -8,8 +8,8 @@
     "start:db": "node app.js",
     "start:local": "node start-local.cjs",
     "dev": "nodemon app.js",
-        "buat-admin": "node buatAdmin.js",
-        "test": "node --test tests/*.test.cjs"
+    "buat-admin": "node buatAdmin.js",
+    "test": "node --test tests/*.test.cjs"
   },
   "keywords": [],
   "author": "Aldi Yonatan Rusnawan",
