@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 
 const dapurRoutes = require('./routes/dapurRoutes');
 const paketRoutes = require('./routes/paketRoutes');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 const { notFoundHandler, errorHandler } = require('./middlewares/errorHandler');
 
 if (!process.env.JWT_SECRET) {
@@ -18,10 +20,18 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
 }));
 app.use(express.json());
 
+// Express 5: req.body bernilai undefined bila request tidak membawa body JSON
+app.use((req, res, next) => {
+  req.body ??= {};
+  next();
+});
+
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 app.use('/dapur', dapurRoutes);
 app.use('/paket-katering', paketRoutes);
 

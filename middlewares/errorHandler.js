@@ -1,3 +1,8 @@
+exports.errorHttp = (status, message) => {
+  const err = new Error(message);
+  err.status = status;
+  return err;
+};
 exports.notFoundHandler = (req, res) => {
   res.status(404).json({ message: 'Rute tidak ditemukan' });
 };
