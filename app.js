@@ -8,6 +8,11 @@ const dapurRoutes = require('./routes/dapurRoutes');
 const paketRoutes = require('./routes/paketRoutes');
 const { notFoundHandler, errorHandler } = require('./middlewares/errorHandler');
 
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET belum diisi di .env');
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
